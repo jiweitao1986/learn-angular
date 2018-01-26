@@ -9,35 +9,20 @@ import { EffectsModule } from '@ngrx/effects';
 
 import { Logger, AppModuleLogger } from './shared/services/logger';
 import { AppComponent } from './app.component';
-import { rootRoutes } from './app.routes';
 
-//DirectiveModule
+
+//AppRoutingModule
+import { AppRoutingModule } from './app-routing.module';
+
+// Feature Modules
 import { ComponentDemoModule } from './demos/component/component-demo.module';
-
-
-//DirectiveModule
 import { DirectiveDemoModule } from './demos/directive/directive-demo.module';
-
-//DirectiveModule
 import { DiDemoModule } from './demos/di/di-demo.module';
-
-//RouterModule
 import { RouterDemoModule } from './demos/router/router-demo.module';
-
-
-// FormDemoModule
 import { FormDemoModule } from './demos/form/form-demo.module';
-
-// HttpDemoModule
 import { HttpDemoModule } from './demos/http/http-demo.module';
-
-// MiscDemoModule
 import { MiscDemoModule } from './demos/misc/misc-demo.module';
-
-// RxjsDemoModule
 import { RxjsDemoModule } from './demos/rxjs/rxjs-demo.module';
-
-// SimpleDemoModule
 import { SimpleDemoModule } from './demos/simple/simple-demo.module';
 
 
@@ -49,18 +34,18 @@ import { SimpleDemoModule } from './demos/simple/simple-demo.module';
     imports: [
         CommonModule,
         BrowserModule,
-        RouterModule.forRoot(rootRoutes),
 
         DiDemoModule,
-        RouterDemoModule,
         ComponentDemoModule,
         DirectiveDemoModule,
-
         FormDemoModule,
         HttpDemoModule,
         MiscDemoModule,
-        SimpleDemoModule,
         RxjsDemoModule,
+        SimpleDemoModule,
+        RouterDemoModule,
+
+        AppRoutingModule
       ],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy },

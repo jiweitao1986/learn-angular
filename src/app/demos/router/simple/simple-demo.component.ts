@@ -3,9 +3,9 @@ import {
 } from '@angular/core';
 
 @Component({
-    selector: 'app-simple-demo',
+    selector: 'app-simple-router',
     template: `
-    <div class="well">简单测试</div>
+      <div class="well">简单路由加载</div>
     `,
     providers: [
       
