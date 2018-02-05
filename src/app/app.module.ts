@@ -9,9 +9,7 @@ import { EffectsModule } from '@ngrx/effects';
 
 import { Logger, AppModuleLogger } from './shared/services/logger';
 import { AppComponent } from './app.component';
-
-
-//AppRoutingModule
+import { WelcomeComponent } from './welcome.component';
 import { AppRoutingModule } from './app-routing.module';
 
 // Feature Modules
@@ -23,13 +21,15 @@ import { FormDemoModule } from './demos/form/form-demo.module';
 import { HttpDemoModule } from './demos/http/http-demo.module';
 import { MiscDemoModule } from './demos/misc/misc-demo.module';
 import { RxjsDemoModule } from './demos/rxjs/rxjs-demo.module';
+import { TestDemoModule } from './demos/test/test-demo.module';
 import { SimpleDemoModule } from './demos/simple/simple-demo.module';
 
 
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        WelcomeComponent
     ],
     imports: [
         CommonModule,
@@ -44,6 +44,7 @@ import { SimpleDemoModule } from './demos/simple/simple-demo.module';
         RxjsDemoModule,
         SimpleDemoModule,
         RouterDemoModule,
+        TestDemoModule,
 
         AppRoutingModule
       ],

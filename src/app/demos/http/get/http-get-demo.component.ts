@@ -12,7 +12,7 @@ class HttpGetDemoComponent {
     /**
      * url
      */
-    url = 'http://localhost:3000/json/';
+    url = 'http://localhost:8080';
 
     /**
      * 请求结果
@@ -24,13 +24,14 @@ class HttpGetDemoComponent {
      * @param http
      */
     constructor(private http: HttpClient) {
+      
     }
 
     /**
      * 获取员工集合
      */
     getEmps() {
-        this.http.get(this.url + 'emp.json').subscribe(data => {
+        this.http.get(this.url + '/emp').subscribe(data => {
             this.result = JSON.stringify(data);
         });
     }

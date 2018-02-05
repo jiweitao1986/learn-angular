@@ -1,28 +1,25 @@
-// 导入模块
 import { NgModule, Inject } from '@angular/core';
-import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
 import { Logger, FeatureModuleLogger } from '../../shared/services/logger';
 
-
-// 组件
+import { DiDemoRoutingModule } from './di-demo-routing.module';
 import { SimpleDemoModule } from './simple/simple-demo.module';
+
 import { DiDemoComponent } from './di-demo.component';
-// import { SimpleDemoComponent } from './simple/simple-demo.component';
-// import { SubSimpleDemoComponent } from './simple/sub-simple-demo.component';
+
 
 /**
- * DirectiveDemoModule
+ * DiDemoModule
  */
 @NgModule({
     declarations: [
       DiDemoComponent,
     ],
     imports: [
-        RouterModule,
         HttpClientModule,
 
+        DiDemoRoutingModule,
         SimpleDemoModule
     ],
     exports: [

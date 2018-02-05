@@ -1,18 +1,17 @@
-// 导入模块
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
 
-// 组件
+import { Logger, FeatureModuleLogger, DirectiveLogger } from '../../shared/services/logger';
+
+
+import { DirectiveDemoRoutingModule } from './directive-demo-routing.module';
+
 import { DirectiveDemoComponent } from './directive-demo.component';
-
 import { HighlightDirective }     from './custom/highlight/highlight.directive';
 import { HighlightDemoComponent } from './custom/highlight/highlight-demo.component';
-
 import { UnlessDirective }     from './custom/unless/unless.directive';
 import { UnlessDemoComponent } from './custom/unless/unless-demo.component';
 import { UnlessDemoItemComponent } from './custom/unless/unless-demo-item.component';
-import { Logger, FeatureModuleLogger, DirectiveLogger } from '../../shared/services/logger';
+
 
 /**
  * DirectiveDemoModule
@@ -29,18 +28,12 @@ import { Logger, FeatureModuleLogger, DirectiveLogger } from '../../shared/servi
       UnlessDemoItemComponent
     ],
     imports: [
-        RouterModule,
-        HttpClientModule
+        DirectiveDemoRoutingModule
     ],
     exports: [
       DirectiveDemoComponent,
       HighlightDirective,
-      HighlightDemoComponent,
-
       UnlessDirective,
-      UnlessDemoComponent,
-      UnlessDemoItemComponent
-
     ],
     providers: [
       {provide: 'Logger', useClass: DirectiveLogger}

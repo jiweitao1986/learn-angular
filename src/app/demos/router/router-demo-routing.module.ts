@@ -10,7 +10,7 @@ const routes: Routes = [
     component: RouterDemoComponent,
     children: [
       { path: 'simple', component: SimpleDemoComponent },
-      { path: 'hero',   loadChildren: 'app/demos/router/hero/hero-demo.module#HeroDemoModule'},
+      //{ path: 'hero',   loadChildren: 'app/demos/router/hero/hero-demo.module#HeroDemoModule'},
       { path: '', redirectTo: 'simple', pathMatch: 'full' }
     ]
   },

@@ -2,7 +2,7 @@
  * 简单模块
  */
 
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 
 /**
@@ -13,8 +13,16 @@ import { Component } from '@angular/core';
   templateUrl: './http-post-demo.component.html'
 })
 
-class HttpPostDemoComponent {
-  title = 'Http Post Demo';
+class HttpPostDemoComponent implements OnInit {
+  
+  title = 'Post Demo';
+
+  constructor() {
+
+  }
+
+  ngOnInit() {
+  }
 }
 
 
