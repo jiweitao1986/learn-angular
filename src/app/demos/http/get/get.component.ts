@@ -3,39 +3,38 @@ import { HttpClient } from '@angular/common/http';
 
 
 @Component({
-    selector: 'http-get-demo',
-    templateUrl: './http-get-demo.component.html'
+    selector: 'app-get',
+    templateUrl: './get.component.html'
 })
 
-class HttpGetDemoComponent {
+class GetComponent {
 
     /**
      * url
      */
-    url = 'http://localhost:8080';
+    private url = 'http://localhost:8080/emps';
 
     /**
      * 请求结果
      */
-    result: string;
+    private data: any;
 
     /**
      * 构造函数
      * @param http
      */
     constructor(private http: HttpClient) {
-      
     }
 
     /**
      * 获取员工集合
      */
-    getEmps() {
-        this.http.get(this.url + '/emp').subscribe(data => {
-            this.result = JSON.stringify(data);
-        });
+    private getEmps() {
+      this.http.get(this.url).subscribe(data => {
+          this.data = data;
+      });
     }
 }
 
 
-export { HttpGetDemoComponent };
+export { GetComponent };

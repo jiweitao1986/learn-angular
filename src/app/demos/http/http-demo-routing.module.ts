@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { HttpDemoComponent } from './http-demo.component';
-import { HttpGetDemoComponent } from './get/http-get-demo.component';
-import { HttpPostDemoComponent } from './post/http-post-demo.component';
+import { GetComponent } from './get/get.component';
+import { PostComponent } from './post/post.component';
 
 
 const routes: Routes = [
@@ -12,8 +12,8 @@ const routes: Routes = [
     component: HttpDemoComponent,
     children: [
       { path: '', redirectTo: 'get', pathMatch: 'full' },
-      { path: 'get',  component: HttpGetDemoComponent },
-      { path: 'post', component: HttpPostDemoComponent }
+      { path: 'get',  component: GetComponent },
+      { path: 'post', component: PostComponent }
     ]
   },
 ];

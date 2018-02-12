@@ -9,11 +9,11 @@ import { Component, OnInit } from '@angular/core';
  * Simple Demo 根组件
  */
 @Component({
-  selector: 'http-post-demo',
-  templateUrl: './http-post-demo.component.html'
+  selector: 'app-post',
+  templateUrl: './post.component.html'
 })
 
-class HttpPostDemoComponent implements OnInit {
+class PostComponent implements OnInit {
   
   title = 'Post Demo';
 
@@ -26,4 +26,4 @@ class HttpPostDemoComponent implements OnInit {
 }
 
 
-export { HttpPostDemoComponent }
+export { PostComponent }

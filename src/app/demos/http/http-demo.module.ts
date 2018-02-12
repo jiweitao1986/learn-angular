@@ -1,19 +1,23 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { HttpDemoRoutingModule } from './http-demo-routing.module';
 import { HttpDemoComponent } from './http-demo.component';
-import { HttpGetDemoComponent } from './get/http-get-demo.component';
-import { HttpPostDemoComponent } from './post/http-post-demo.component';
+import { GetComponent } from './get/get.component';
+import { PostComponent } from './post/post.component';
 
 
 @NgModule({
   declarations: [
     HttpDemoComponent,
-    HttpGetDemoComponent,
-    HttpPostDemoComponent
+    GetComponent,
+    PostComponent
   ],
   imports: [
+    CommonModule,
+    FormsModule,
     HttpClientModule,
     HttpDemoRoutingModule
   ],
