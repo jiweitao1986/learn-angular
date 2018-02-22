@@ -1,0 +1,38 @@
+[
+  {
+    "ID": "11",
+    "EmpID": "1",
+    "Year": "2017",
+    "Month": "1",
+    "Salary": 1000,
+    "Deduction": 200,
+    "Income": 800
+  },
+  {
+    "ID": "12",
+    "EmpID": "1",
+    "Year": "2017",
+    "Month": "2",
+    "Salary": 2000,
+    "Deduction": 400,
+    "Income": 1600
+  },
+  {
+    "ID": "21",
+    "EmpID": "2",
+    "Year": "2017",
+    "Month": "1",
+    "Salary": 1000,
+    "Deduction": 200,
+    "Income": 800
+  },
+  {
+    "ID": "22",
+    "EmpID": "2",
+    "Year": "2017",
+    "Month": "2",
+    "Salary": 2000,
+    "Deduction": 400,
+    "Income": 1600
+  }
+]

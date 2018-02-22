@@ -4,6 +4,14 @@ var _ = require('lodash');
 
 var empModel = {
 
+  /**
+   * 文件目录
+   */
+  fileDir: '../data/',
+
+  /**
+   * 表配置
+   */
   tableConfigs: [
     { tableName: 'Emp',    parentTable: '',    primaryKey: 'ID', foreignKey: ''},
     { tableName: 'Edu',    parentTable: 'Emp', primaryKey: 'ID', foreignKey: 'EmpID'},
@@ -11,233 +19,262 @@ var empModel = {
     { tableName: 'Income', parentTable: 'Emp', primaryKey: 'ID', foreignKey: 'EmpID'},
   ],
 
-  /**
-   * 获取列表(只获取主表数据)
-   */
-  getList: function() {
-    var self = this;
-    var result = {};
-    _.each(this.tables, function(table) {
-      var tableName = table.tableName;
-      if (table.parentTable === '') {
-        result[tableName] = self.getJsonDataByFilter(tableName);
-      } else {
-        result[tableName] = [];
-      }
-    });
-    return result;
-  },
+  // /**
+  //  * 获取列表(只获取主表数据)
+  //  */
+  // getList: function() {
+  //   var self, result, parentTableName;
+  //   self = this;
+  //   result = {};
+  //   parentTableName = this.getParentTableName();
 
-  /**
-   * 获取员工信息
-   */
-  getInfo: function(id) {
-    var self, result;
-    self = this;
-    result = {};
+  //   _.each(this.tableConfigs, function(tableConfig) {
+  //     var tableName = tableConfig['tableName'];
+  //     if (tableName === parentTableName) {
+  //       result[tableName] = self.getTableDataFromFile(tableName);
+  //     } else {
+  //       result[tableName] = [];
+  //     }
+  //   });
+  //   return result;
+  // },
 
-    _.each(this.tables, function(table) {
-      var tableName, primaryKey, foreignKey, filter;
-      tableName  = table.tableName;
-      primaryKey = table.primaryKey;
-      foreignKey = table.foreignKey;
+  // /**
+  //  * 获取员工信息
+  //  */
+  // getInfo: function(id) {
+  //   var allData;
+  //   allData = this.getAllDataFromFile();
+  //   return this.getDataByID(allData, id);
+  // },
 
-      if (table.parentTable === '') {
-        filter = _.set({}, primaryKey, id)
-      } else {
-        filter = _.set({}, foreignKey, id)
-      }
-      result[tableName] = self.getJsonDataByFilter(tableName, filter);
-    });
-    return result;
-  },
+  // /**
+  //  * 删除
+  //  */
+  // del: function(id) {
+  //   var allData, newAllData;
+  //   allData = this.getAllDataFromFile();
+  //   newAllData = this.delDataByID(id);
+  //   this.saveAllDataToFile(newAllData);
+  // },
 
-  /**
-   * 删除
-   */
-  del: function(id) {
-    console.log('del');
-  },
+  // /**
+  //  * 批量删除
+  //  */
+  // multiDel: function(ids) {
+  //   var self = this;
+  //   _.each(ids, function(id) {
+  //     self.del(id);
+  //   });
+  // },
 
-  /**
-   * 批量删除
-   */
-  multiDel: function() {
-    console.log('multiDel');
-  },
+  // /**
+  //  * 新增
+  //  */
+  // save: function(data) {
+  //   var id, allData, newAllData, isExist;
+  //   allData = this.getAllDataFromFile();
 
-  /**
-   * 新增
-   * [
-   *  table1: [],
-   *  table2: []
-   * ]
-   */
-  save: function(data) {
-    var self, result, tableConfig, tableData, id, allData, isExist;
-    self = this;
+  //   //获取主表记录的ID
+  //   id = this.getParentTableID(data);
+  //   isExist = this.isExist(allData);
 
-    //获取主表记录的ID
-    tableConfig = _.find(self.tableConfigs, {parentTable: ''});
-    tableData = data[tableConfig.tableName];
-    id = tableData[0][tableConfig.primaryKey];
+  //   //如果已经存在，先删除相关数据
+  //   if (isEXist) {
+  //     allData = this.delDataByID(allData, id);
+  //   }
 
-    //如果已经存在，先删除相关数据
-    allData = self.getAllDataFromFile();
-    isExist = self.isExist(id, tableConfig);
-    if (isEXist) {
-      allData = self.delDataByID(allData, id);
-    }
+  //   //追加数据
+  //   newAllData = this.appendData(allData, data);
+  //   this.saveAllDataToFile(allData);
+  // },
 
-    //追加数据
-    result = self.appendData(allData, data);
-    return result;
-  },
-
-  /**
-   * 批量保存
-   */
-  multiSave: function(data) {
-    console.log('暂不实现');
-  },
+  // /**
+  //  * 批量保存
+  //  */
+  // multiSave: function(data) {
+  //   console.log('暂不实现');
+  // },
 
 
-  // ----------------------------------------
-  // 工具方法
-  // ----------------------------------------
+  // // ----------------------------------------
+  // // 表配置处理工具方法
+  // // ----------------------------------------
+
+  // /**
+  //  * 获取tableName的表配置
+  //  */
+  // getTableConfig: function(tableName) {
+  //   var tableConfig = _.find(self.tableConfigs, {tableName: tableName});
+  //   return tableConfig;
+  // },
+
+  // /**
+  //  * 获取主表表配置
+  //  */
+  // getParentTableConfig: function() {
+  //   var tableConfig = _.find(self.tableConfigs, {parentTable: ''});
+  //   return tableConfig;
+  // },
+
+  // /**
+  //  * 获取主表表名
+  //  */
+  // getParentTableName: function() {
+  //   var tableConfig = this.getParentTableConfig();
+  //   return tableConfig[tableName];
+  // },
 
 
+  // // ----------------------------------------
+  // // data处理工具方法
+  // // ----------------------------------------
 
-  /**
-   * 获取主表信息
-   */
-  getParentTable() {
-    const tableConfig = _.find(self.tableConfigs, {parentTable: ''});
-    return tableConfig;
-  }
+  // /**
+  //  * 从data中获取主表记录的ID
+  //  */
+  // getParentTableID: function(data) {
+  //   var tableConfig, tableName, primaryKey, tableData, firstRow, id;
 
-  /**
-   * 根据给定的主表id，获取data中检索相关数据
-   */
-  getDataByID(data, id) {
-    var self, result;
-    self = this;
-    result = {};
+  //   tableConfig = this.getParentTableConfig();
+  //   tableName = tableConfig['tableName'];
+  //   primaryKey = tableConfig['primaryKey'];
 
-    _.each(this.tableConfigs, function(tableConfig) {
-      var tableName, tableData, filter;
+  //   tableData = data[tableName];
+  //   firstRow = tableData[0];
+  //   id = firstRow[primaryKey];
 
-      tableName  = tableConfig.tableName;
-      tableData  = data[tableName];
+  //   return id;
+  // },
 
-      result[tableName] = _.filter(tableData, function(rowData) {
-        if (tableConfig.parentTable === '') {
-          return rowData[tableConfig.primaryKey] === id;
-        } else {
-          return rowData[tableConfig.foreignKey] === id;
-        }
-      });
+  // /**
+  //  * 根据给定的主表id，获取data中检索相关数据
+  //  */
+  // getDataByID: function(data, id) {
+  //   var self, result;
+  //   self = this;
+  //   result = {};
 
-    });
+  //   _.each(this.tableConfigs, function(tableConfig) {
+  //     var tableName, tableData, filter;
 
-    return result;
-  }
+  //     tableName  = tableConfig['tableName'];
+  //     tableData  = data[tableName];
 
-  /**
-   * 根据给定的主表id，从给定data中移除相关数据
-   */
-  delDataByID(data, id) {
-    var self, result;
-    self = this;
-    result = {};
+  //     result[tableName] = _.filter(tableData, function(rowData) {
+  //       if (tableConfig.parentTable === '') {
+  //         return rowData[tableConfig.primaryKey] === id;
+  //       } else {
+  //         return rowData[tableConfig.foreignKey] === id;
+  //       }
+  //     });
 
-    _.each(this.tables, function(table) {
-      var tableName, tableData, filter;
+  //   });
 
-      tableName  = table.tableName;
-      tableData = data[tableName];
+  //   return result;
+  // },
 
-      result[tableName] = _.filter(tableData, function(rowData) {
-        if (tableConfig.parentTable === '') {
-          return rowData[tableConfig.primaryKey] !== id;
-        } else {
-          return rowData[tableConfig.foreignKey] !== id;
-        }
-      });
+  // /**
+  //  * 根据给定的主表id，从给定data中移除相关数据
+  //  */
+  // delDataByID: function(data, id) {
+  //   var self, result;
+  //   self = this;
+  //   result = {};
 
-    });
+  //   _.each(this.tableConfigs, function(tableConfig) {
+  //     var tableName, tableData, filter;
 
-    return result;
-  }
+  //     tableName  = tableConfig['tableName'];
+  //     tableData = data[tableName];
 
-  /**
-   * 合并数据
-   */
-  appendData: function(data, dataToAppend) {
-    var result = {}
+  //     result[tableName] = _.filter(tableData, function(rowData) {
+  //       if (tableConfig.parentTable === '') {
+  //         return rowData[tableConfig.primaryKey] !== id;
+  //       } else {
+  //         return rowData[tableConfig.foreignKey] !== id;
+  //       }
+  //     });
 
-    _.each(dataToAppend, function(tableDataToAppend, tableNameToAppend) {
-      var tableData = data[tableName];
-      if (tableData instanceof Array) {
-        result[tableName] = tableData.contact(tableDataToAppend);
-      }
-    });
+  //   });
 
-    return result;
-  }
+  //   return result;
+  // },
+
+  // /**
+  //  * 合并数据
+  //  */
+  // appendData: function(data, dataToAppend) {
+  //   var result = {}
+
+  //   _.each(dataToAppend, function(tableDataToAppend, tableNameToAppend) {
+  //     var tableData = data[tableNameToAppend];
+  //     if (tableData instanceof Array) {
+  //       result[tableNameToAppend] = tableData.contact(tableDataToAppend);
+  //     }
+  //   });
+
+  //   return result;
+  // },
+
+  // /**
+  //  * 判断data的主表中是否存在值为id的行
+  //  */
+  // isExist: function(data, id) {
+  //   var tableConfig, tableName, primaryKey, tableData, isExist;
+
+  //   // 获取主表数据
+  //   tableConfig = this.getParentTableConfig;
+  //   tableName = tableConfig['tableName'];
+  //   primaryKey = tableConfig['primaryKey'];
+  //   tableData = data[tableName];
+    
+  //   // 判断行是否存在
+  //   isExist = _.some(tableData, function(rowData) {
+  //     rowData[primaryKey] = id;
+  //   });
+
+  //   return isExist;
+  // },
 
 
-
-  /**
-   * 判断是否是新增数据
-   */
-  isExist: function(table, id) {
-    var tableData = self.getTableDataFromFile(tableName);
-    var isExist = _.some(tableData, function(rowData) {
-      rowData[table.primaryKey] = id;
-    })
-    return isExist;
-  }
-
-  /**
-   * 获取主表配置
-   */
-  getParentTableConfig: function() {
-    var table = _.find(this.tables, {parentTable: ''});
-    return table;
-  }
-
-
-  // ----------------------------------------
-  // JSON文件操作
-  // ----------------------------------------
+  // // ----------------------------------------
+  // // JSON文件操作
+  // // ----------------------------------------
 
   /**
    * 获取表对应的JSON文件
    */
   getFilePath: function(tableName) {
     var fileName = tableName + '.json';
-    return path.resolve(__dirname, '../data/' + fileName);
+    return path.resolve(__dirname, this.fileDir + fileName);
   },
 
   /**
    * 从JSON文件中获取员工列表
    */
   getTableDataFromFile: function(tableName) {
-    var path = this.getFilePath(tableName);
-    var json = fs.readFileSync(path);
-    var list = JSON.parse(json);
-    return list;
+    var path, json, tableData;
+    path = this.getFilePath(tableName);
+    json = fs.readFileSync(path);
+    tableData = JSON.parse(json);
+
+    return tableData;
   },
 
   /**
    * 从JSON文件中获取全部数据
    */
-  getAllDataFromFile() {
-    var result = {};
-    _.each(this.tables, function(table) {
-      result[table.tableName] = self.getTableDataFromFile(tableName);
+  getAllDataFromFile: function() {
+    var self, result;
+    self = this;
+    result = {};
+
+    _.each(this.tableConfigs, function(tableConfig) {
+      var tableName = tableConfig.tableName;
+      result[tableName] = self.getTableDataFromFile(tableName);
     });
+
     return result;
   },
 
@@ -245,28 +282,34 @@ var empModel = {
    * 将员工列表写入到JSON文件中
    */
   saveTableDataToFile: function(tableName, tableData) {
-    var path = this.getFilePath(tableName);
-    list = _.orderBy(list, ['ID'], ['asc']);
-    var json = JSON.stringify(list);
+    var path, json;
+    tableData = _.orderBy(
+      tableData,
+      function(item) {
+        return parseInt(item.ID);
+      },
+      'asc'
+    );
+    path = this.getFilePath(tableName);
+    json = JSON.stringify(tableData);
     fs.writeFileSync(path, json);
   },
 
   /**
    * 将数据设置到相关JSON文件中
    */
-  saveAllDataToFile(data) {
+  saveAllDataToFile: function(data) {
     var self, result;
     self = this;
     result = {};
 
-    _.each(this.tables, function(table) {
+    _.each(this.tableConfigs, function(tableConfigs) {
       var tableName, tableData;
       tableName = table.tableName;
-      if (data[tableName]) {
-        var tableData = data[tableName];
-        self.saveTableData(tableName, tableData);
-      }
+      tableData = data[tableName] ? data[tableName] : [];
+      self.saveTableData(tableName, tableData);
     });
+
     return result;
   }
 

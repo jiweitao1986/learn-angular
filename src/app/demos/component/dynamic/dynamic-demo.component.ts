@@ -46,6 +46,9 @@ import { ItemsHostDirective } from './items-host.directive';
     </div>
 
 
+    
+    
+    
     <div style="margin-top: 20px;">
       <dl>
         <dt>插入到ng-template内</dt>
@@ -54,6 +57,8 @@ import { ItemsHostDirective } from './items-host.directive';
         <p>Template内的默认内容</p>
       </ng-template>
     <div>
+
+
 
     <div style="margin-top: 20px;">
       <dl>
