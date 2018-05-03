@@ -1,15 +1,16 @@
 import { Component, Inject, OnInit} from '@angular/core';
+import { Logger, LOGGER_TOKEN } from '../../../shared/services/logger';
+
 
 @Component({
-    selector: 'app-unless-demo',
+    selector: 'app-simple-sub-feature',
     template: `
-      <p appHighlight>Highlight</p>
-      <app-unless-demo-item appHighlight></app-unless-demo-item>
+      <div>Simple Sub Feature</div>
     `,
     providers: [
     ]
 })
-class UnlessDemoComponent implements OnInit {
+class SimpleSubFeatureComponent implements OnInit {
 
     /**
      * 构造函数
@@ -24,4 +25,4 @@ class UnlessDemoComponent implements OnInit {
     }
 }
 
-export { UnlessDemoComponent };
+export { SimpleSubFeatureComponent };

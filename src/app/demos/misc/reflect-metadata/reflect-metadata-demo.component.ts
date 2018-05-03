@@ -10,7 +10,7 @@ class Person {
 
   }
 }
-Reflect.defineMetadata('testKey', 'testValue', Person);
+// Reflect.defineMetadata('testKey', 'testValue', Person);
 
 
 @Component({
@@ -28,7 +28,7 @@ export class ReflectMetadataDemoComponent implements OnInit {
 
     ngOnInit() {
       console.log('test ');
-      console.log(Reflect.getMetadata('testKey', Person));
+      // console.log(Reflect.getMetadata('testKey', Person));
     }
 
 }

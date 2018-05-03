@@ -7,7 +7,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 import { EffectsModule } from '@ngrx/effects';
 
-import { Logger, AppModuleLogger } from './shared/services/logger';
+import { Logger, LOGGER_TOKEN, AppModuleLogger } from './shared/services/logger';
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './welcome.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -50,12 +50,12 @@ import { SimpleDemoModule } from './demos/simple/simple-demo.module';
       ],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy },
-        //{ provide: 'Logger', useClass: AppModuleLogger }
+        { provide: LOGGER_TOKEN, useClass: AppModuleLogger }
     ],
     bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(@Inject('Logger')logger: Logger) {
-    logger.write('AppModule');
+  constructor(@Inject(LOGGER_TOKEN)logger) {
+    logger.write('AppModel -- the root module.');
   }
 }

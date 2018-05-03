@@ -13,6 +13,17 @@ import {
 })
 class HighlightDirective {
 
+
+  /**
+   * 高亮颜色
+   */
+  @Input('highlightColor')
+  highlightColor: string;
+
+
+  // @HostBinding('attribute.class')
+  activeClass: string;
+
   /**
    * 构造函数
    * @param el
@@ -24,17 +35,6 @@ class HighlightDirective {
   ) {
     console.log('HighlightDirective constructor');
   }
-
-  /**
-   * 高亮颜色
-   */
-  @Input('appHighlight')
-  highlightColor: string;
-
-
-  // @HostBinding('attribute.class')
-  activeClass: string;
-  
 
   /**
    * 监听宿主的mouseenter
@@ -54,7 +54,7 @@ class HighlightDirective {
 
   /**
    * 给nativeElement加背景色
-   * @param color 
+   * @param color
    */
   private highlight(color: string) {
     this.el.nativeElement.style.backgroundColor = color;
