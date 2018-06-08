@@ -2,15 +2,7 @@
  * Simple Demo
  */
 
-import {
-  Component,
-  ElementRef,
-  TemplateRef,
-  ViewContainerRef,
-  Injector,
-  
-  OnInit
-} from '@angular/core';
+import { Component, ElementRef, TemplateRef, ViewContainerRef, Injector, OnInit } from '@angular/core';
 
 /**
  * Simple Item 组件
@@ -24,12 +16,9 @@ import {
   `
 })
 class SimpleItemComponent implements OnInit  {
-  
   showIntro: boolean;
-
   constructor(
     elementRef: ElementRef,
-    //templateRef: TemplateRef<any>,
     containerRef: ViewContainerRef,
     injector: Injector
   ) {

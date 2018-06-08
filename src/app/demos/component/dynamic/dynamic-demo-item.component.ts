@@ -3,13 +3,7 @@
  */
 
 import {
-  Component,
-  ComponentFactoryResolver,
-  Input,
-  OnInit,
-  OnChanges,
-  SimpleChanges,
-  AfterViewInit
+  Component, ComponentFactoryResolver, Input, OnInit, OnChanges, SimpleChanges, AfterViewInit
 } from '@angular/core';
 
 
@@ -19,17 +13,14 @@ import {
 @Component({
   selector: 'app-dynamic-demo-item',
   template: `
-    <div>Item Component</div>
+    <div>{{content}}</div>
   `
 })
-
 class DynamicDemoItemComponent implements OnInit, OnChanges, AfterViewInit {
 
-  @Input() content: string;
+  @Input()
+  content: string;
 
-  /**
-   * 构造函数
-   */
   constructor() {
     this.content = 'Default Content';
   }
@@ -41,7 +32,6 @@ class DynamicDemoItemComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   ngAfterViewInit() {
-
   }
 }
 

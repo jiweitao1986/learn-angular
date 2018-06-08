@@ -14,11 +14,10 @@ import { Component, OnInit } from '@angular/core';
 })
 
 class PostComponent implements OnInit {
-  
+
   title = 'Post Demo';
 
   constructor() {
-
   }
 
   ngOnInit() {
@@ -26,4 +25,4 @@ class PostComponent implements OnInit {
 }
 
 
-export { PostComponent }
+export { PostComponent };

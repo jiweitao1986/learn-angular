@@ -12,7 +12,7 @@ class GetComponent {
     /**
      * url
      */
-    private url = 'http://localhost:8080/emps';
+    private url = 'http://192.168.171.123:8080/emps';
 
     /**
      * 请求结果
@@ -29,7 +29,7 @@ class GetComponent {
     /**
      * 获取员工集合
      */
-    private getEmps() {
+    private loadData() {
       this.http.get(this.url).subscribe(data => {
           this.data = data;
       });

@@ -1,0 +1,36 @@
+<h2>{{title}}</h2>
+
+<div class="well">
+  <form class="form-inline"  #searchForm="ngForm">
+    <div class="form-group">
+      <input type="text" name="keyword" ngModel #keywordInput="ngModel" class="form-control">
+    </div>
+    <button type="button" (click)="loadData(keywordInput.value, keywordInput, searchForm)" class="btn btn-default">Search</button>
+    <button type="button" (click)="add()" class="btn btn-primary pull-right">Add</button>
+  </form>
+</div>
+
+<table class="table table-bordered table-striped table-hover">
+  <thead>
+    <tr>
+      <td>ID</td>
+      <th>Code</th>
+      <th>Name</th>
+      <th>OP</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let emp of emps">
+      <td width="10%">{{emp.ID}}</td>
+      <td width="30%">{{emp.Code}}</td>
+      <td width="30%">{{emp.Name}}</td>
+      <td width="30%">
+        <a class="text-success" [routerLink]="['/http/emp-edit', emp.ID]">Edit</a>&nbsp;&nbsp;
+        <a class="text-danger"(click)="remove(emp.ID)">Delete</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<pre>{{emps|json}}</pre>
+

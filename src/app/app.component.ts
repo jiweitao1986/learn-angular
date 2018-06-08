@@ -6,13 +6,10 @@ import { Logger, AppComponentLogger } from './shared/services/logger';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: [],
-  providers: [
-    // { provide: 'Logger', useClass: AppComponentLogger }
-  ]
+  providers: []
 })
 export class AppComponent {
   title = 'app';
-  constructor(@Inject('Logger')logger: Logger) {
-    logger.write('AppComponent');
+  constructor() {
   }
 }

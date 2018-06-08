@@ -50,12 +50,10 @@ import { SimpleDemoModule } from './demos/simple/simple-demo.module';
       ],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy },
-        //{ provide: 'Logger', useClass: AppModuleLogger }
     ],
     bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(@Inject('Logger')logger: Logger) {
-    logger.write('AppModule');
+  constructor() {
   }
 }

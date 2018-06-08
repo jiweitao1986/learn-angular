@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ComponentDemoComponent } from './component-demo.component';
 import { SimpleDemoComponent} from './simple/simple-demo.component';
 import { DynamicDemoComponent} from './dynamic/dynamic-demo.component';
-
+import { InteractionComponent } from './interaction/interaction.component';
 
 /**
  * 表单路由定义
@@ -15,8 +15,9 @@ const routes: Routes = [
     component: ComponentDemoComponent,
     children: [
       { path: '', redirectTo: 'simple', pathMatch: 'full' },
-      { path: 'simple',  component: SimpleDemoComponent },
-      { path: 'dynamic', component: DynamicDemoComponent },
+      { path: 'simple',      component: SimpleDemoComponent },
+      { path: 'dynamic',     component: DynamicDemoComponent },
+      { path: 'interaction', component: InteractionComponent}
     ]
   },
 ];

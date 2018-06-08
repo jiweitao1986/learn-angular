@@ -8,12 +8,21 @@ import { HttpDemoComponent } from './http-demo.component';
 import { GetComponent } from './get/get.component';
 import { PostComponent } from './post/post.component';
 
+// emps
+import { EmpListComponent } from './emps/emp-list/emp-list.component';
+import { EmpAddComponent } from './emps/emp-add/emp-add.component';
+import { EmpEditComponent } from './emps/emp-edit/emp-edit.component';
+
 
 @NgModule({
   declarations: [
     HttpDemoComponent,
     GetComponent,
-    PostComponent
+    PostComponent,
+
+    EmpListComponent,
+    EmpAddComponent,
+    EmpEditComponent
   ],
   imports: [
     CommonModule,
