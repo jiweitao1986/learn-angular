@@ -1,14 +1,8 @@
 import { Component, Inject, OnInit} from '@angular/core';
-import {
-  Logger, SubComponentLogger
-} from '../../../../shared/services/logger';
 
 @Component({
     selector: 'app-unless-demo-item',
-    template: '<p>这是一个Item</p>',
-    providers: [
-      {provide: 'Logger', useClass: SubComponentLogger}
-    ]
+    template: '<p>这是一个Item</p>'
 })
 class UnlessDemoItemComponent implements OnInit {
 

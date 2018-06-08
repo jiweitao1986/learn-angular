@@ -1,6 +1,5 @@
 import { Component, Inject } from '@angular/core';
-
-import { Logger, AppComponentLogger } from './shared/services/logger';
+import { Logger, LOGGER_TOKEN, AppComponentLogger } from './shared/services/logger';
 
 @Component({
   selector: 'app-root',

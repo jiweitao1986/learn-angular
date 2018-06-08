@@ -7,7 +7,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 import { EffectsModule } from '@ngrx/effects';
 
-import { Logger, AppModuleLogger } from './shared/services/logger';
+import { Logger, LOGGER_TOKEN, AppModuleLogger } from './shared/services/logger';
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './welcome.component';
 import { AppRoutingModule } from './app-routing.module';
