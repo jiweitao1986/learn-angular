@@ -16,4 +16,5 @@ import { Component } from '@angular/core';
 class ComponentDemoComponent {
 }
 
-export { ComponentDemoComponent }
+export { ComponentDemoComponent };
+

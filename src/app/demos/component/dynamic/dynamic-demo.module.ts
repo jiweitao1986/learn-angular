@@ -27,7 +27,7 @@ import { ItemsHostDirective } from './items-host.directive';
     entryComponents: [DynamicDemoItemComponent]
 })
 class DynamicDemoModule {
-  
+
   /**
    * 构造函数
    */

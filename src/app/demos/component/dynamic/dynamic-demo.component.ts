@@ -107,7 +107,7 @@ class DynamicDemoComponent implements AfterViewInit, OnDestroy {
     this.loadItemsIntoParent();
     this.loadItemsIntoDirectiveHost();
     this.loadItemsIntoNgTemplate();
-    this.loadItemsIntoDiv()
+    this.loadItemsIntoDiv();
   }
 
   /**
@@ -170,4 +170,5 @@ class DynamicDemoComponent implements AfterViewInit, OnDestroy {
   }
 }
 
-export { DynamicDemoComponent }
+export { DynamicDemoComponent };
+

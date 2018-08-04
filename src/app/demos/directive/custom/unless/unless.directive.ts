@@ -49,6 +49,6 @@ class UnlessDirective {
 
     }
   }
-};
+}
 
 export { UnlessDirective };
