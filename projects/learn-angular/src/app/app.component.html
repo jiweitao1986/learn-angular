@@ -1,0 +1,56 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+        aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" [routerLink]="['']">Angular</a>
+
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li>
+          <a [routerLink]="['router']">Router</a>
+        </li>
+        <li>
+          <a [routerLink]="['component']">Component</a>
+        </li>
+        <li>
+          <a [routerLink]="['directive']">Directive</a>
+        </li>
+        <li>
+          <a [routerLink]="['di']">Di</a>
+        </li>
+        <li>
+          <a [routerLink]="['form']">Form</a>
+        </li>
+        <li>
+          <a [routerLink]="['http']">Http</a>
+        </li>
+        <li>
+          <a [routerLink]="['misc']">Misc</a>
+        </li>
+        <li>
+          <a [routerLink]="['simple']">Simple</a>
+        </li>
+        <li>
+          <a [routerLink]="['rxjs']">Rxjs</a>
+        </li>
+        <li>
+          <a [routerLink]="['test']">Test</a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+
+<div class="container-fluid">
+  <router-outlet></router-outlet>
+</div>

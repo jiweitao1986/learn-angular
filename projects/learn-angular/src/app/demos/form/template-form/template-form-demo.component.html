@@ -1,0 +1,101 @@
+<form #f="ngForm" (ngSubmit)="submit()">
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">基本信息</h3>
+        </div>
+        <div class="panel-body">
+
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" name="name" [(ngModel)]="emp.name" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Gender</label>
+                <div class="radio">
+                    <label class="radio-inline">
+                        <input type="radio" name="gender" value="male" [(ngModel)]="emp.gender"> Male
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="gender" value="female" [(ngModel)]="emp.gender"> Female
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Age</label>
+                <input type="text" name="age" [(ngModel)]="emp.age" class="form-control">
+            </div>
+
+            <div>
+                <label>Nation</label>
+                <select class="form-control" name="nation" [(ngModel)]="emp.nation">
+                    <option value="han">Han</option>
+                    <option value="mongol">Mongol</option>
+                    <option value="manchu">Manchu</option>
+                    <option value="uyghur">Uyghur</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Signature</label>
+                <textarea name="signature" [(ngModel)]="emp.signature" class="form-control">{{emp.signature}}</textarea>
+            </div>
+
+            <!--
+            <div class="form-group">
+                <label>Hobby</label>
+                <div class="checkbox">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="hobby" value="sport"> Sport
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="hobby" value="music"> Music
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="hobby" value="movie"> Movie
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Languages</label>
+                <select name="languages" multiple class="form-control">
+                    <option value="french">Chinese</option>
+                    <option value="english">English</option>
+                    <option value="french">French</option>
+                    <option value="portuguese">Portuguese</option>
+                    <option value="spanish">Spanish </option>
+                </select>
+            </div>
+            -->
+
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">教育经历</h3>
+        </div>
+        <div class="panel-body">
+            <div class="form-inline" *ngFor="let edu of emp.edus">
+                <div class="form-group">
+                    <label class="sr-only">Begin</label>
+                    <input type="text" name="begin-{{edu.id}}" [(ngModel)]="edu.begin" class="form-control" placeholder="Begin Date">
+                </div>
+                <div class="form-group">
+                    <label class="sr-only">End</label>
+                    <input type="text" name="end-{{edu.id}}" [(ngModel)]="edu.end" class="form-control" placeholder="End Date">
+                </div>
+                <div class="form-group">
+                    <label class="sr-only">School</label>
+                    <input type="text" name="school-{{edu.id}}" [(ngModel)]="edu.school" class="form-control" placeholder="School">
+                </div>
+                <button type="button" (click)="delEdu(edu.id)" class="btn btn-default">删除</button>
+            </div>
+            <button type="button" (click)="addEdu()" class="btn btn-default">新增</button>
+        </div>
+    </div>
+
+
+
+    <button type="submit" class="btn btn-default">Submit</button>
+</form>
