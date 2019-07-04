@@ -130,6 +130,134 @@
           }
         }
       }
+    },
+    "simple": {
+      "root": "projects/simple/",
+      "sourceRoot": "projects/simple/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/simple",
+            "index": "projects/simple/src/index.html",
+            "main": "projects/simple/src/main.ts",
+            "polyfills": "projects/simple/src/polyfills.ts",
+            "tsConfig": "projects/simple/tsconfig.app.json",
+            "assets": [
+              "projects/simple/src/favicon.ico",
+              "projects/simple/src/assets"
+            ],
+            "styles": [
+              "projects/simple/src/styles.css"
+            ],
+            "scripts": [],
+            "es5BrowserSupport": true
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/simple/src/environments/environment.ts",
+                  "with": "projects/simple/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "simple:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "simple:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "simple:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/simple/src/test.ts",
+            "polyfills": "projects/simple/src/polyfills.ts",
+            "tsConfig": "projects/simple/tsconfig.spec.json",
+            "karmaConfig": "projects/simple/karma.conf.js",
+            "styles": [
+              "projects/simple/src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/simple/src/favicon.ico",
+              "projects/simple/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/simple/tsconfig.app.json",
+              "projects/simple/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "simple-e2e": {
+      "root": "projects/simple-e2e/",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/simple-e2e/protractor.conf.js",
+            "devServerTarget": "simple:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "simple:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "projects/simple-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "learn-angular"
