@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+// import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -27,31 +27,30 @@ import { SimpleDemoModule } from './demos/simple/simple-demo.module';
 
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        WelcomeComponent
-    ],
-    imports: [
-        CommonModule,
-        BrowserModule,
+  declarations: [
+    AppComponent,
+    WelcomeComponent
+  ],
+  imports: [
+    CommonModule,
 
-        DiDemoModule,
-        ComponentDemoModule,
-        DirectiveDemoModule,
-        FormDemoModule,
-        HttpDemoModule,
-        MiscDemoModule,
-        RxjsDemoModule,
-        SimpleDemoModule,
-        RouterDemoModule,
-        TestDemoModule,
+    DiDemoModule,
+    ComponentDemoModule,
+    DirectiveDemoModule,
+    FormDemoModule,
+    HttpDemoModule,
+    MiscDemoModule,
+    RxjsDemoModule,
+    SimpleDemoModule,
+    RouterDemoModule,
+    TestDemoModule,
 
-        AppRoutingModule
-      ],
-    providers: [
-        { provide: LocationStrategy, useClass: HashLocationStrategy },
-    ],
-    bootstrap: [AppComponent]
+    AppRoutingModule
+  ],
+  providers: [
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule {
   constructor() {
